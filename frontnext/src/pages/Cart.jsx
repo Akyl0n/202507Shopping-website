@@ -37,7 +37,7 @@ const Cart = () => {
       .catch(() => {
         setCart([]);
       });
-  }, []);
+  }, [/* 能跑 忽略 */]);
 
   const handleCheckout = () => {
     if (order && order.status === 'pending') {

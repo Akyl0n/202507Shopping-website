@@ -101,10 +101,10 @@ const Checkout = () => {
       selectedItems.forEach(item => removeFromCart(item.id));
       if (data.order_id) {
         alert('下单成功，请尽快付款！');
-        navigate(`/order/detail/${data.order_id}`);
+        navigate(`/checkout?orderId=${data.order_id}`);
       } else if (data.order_ids && Array.isArray(data.order_ids) && data.order_ids.length > 0) {
         alert('下单成功，请尽快付款！');
-        navigate(`/order/detail/${data.order_ids[0]}`);
+        navigate(`/checkout?orderId=${data.order_ids[0]}`);
       } else {
         alert('下单成功，请尽快付款！');
         navigate('/order/pending');

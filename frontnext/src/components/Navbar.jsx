@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleUserClick = (e) => {
     e.preventDefault();
-    navigate(user ? '/profile' : '/auth');
+    navigate(user ? '/UserProfile' : '/auth');
   };
   return (
     <nav className="navbar">
