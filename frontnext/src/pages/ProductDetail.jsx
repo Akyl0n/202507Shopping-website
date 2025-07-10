@@ -164,6 +164,7 @@ const ProductDetail = () => {
   };
 
   return (
+    <div className={styles.pageWrapper}>
     <div className={styles['product-detail-container']}>
       <div className={styles['product-detail-main']}>
         <div className={styles['product-detail-imgs']}>
@@ -222,6 +223,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+      </div>
       {/* 型号选择弹窗 */}
       {showModelModal && (
         <div style={{position:'fixed',left:0,top:0,width:'100vw',height:'100vh',background:'rgba(0,0,0,0.18)',zIndex:99,display:'flex',alignItems:'center',justifyContent:'center'}} onClick={()=>setShowModelModal(false)}>
@@ -239,8 +241,10 @@ const ProductDetail = () => {
             <button style={{marginTop:18,background:'#1976d2',color:'#fff',border:'none',borderRadius:6,padding:'8px 24px',fontSize:'1rem',cursor:'pointer'}} onClick={()=>setShowModelModal(false)}>取消</button>
           </div>
         </div>
+        
       )}
       {/* 评论区 */}
+      <div className={styles.commentSection}>
       <div style={{marginTop:48,padding:'0 24px'}}>
         <div style={{fontWeight:'bold',fontSize:'1.2rem',marginBottom:18}}>商品评价</div>
         {product.reviews && product.reviews.length > 0 ? (
@@ -268,6 +272,7 @@ const ProductDetail = () => {
           <div style={{color:'#888',fontSize:'1rem',padding:'24px 0'}}>暂无评价</div>
         )}
       </div>
+    </div>
     </div>
   );
 };
