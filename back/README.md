@@ -29,13 +29,3 @@
    ```
 4. 访问测试接口：
    http://localhost:8080/ping
-
-## 目录结构
-- main.go：主程序入口
-- go.mod：依赖管理
-- .github/copilot-instructions.md：Copilot 指令
-
-## TODO
-- 用户注册/登录接口
-- 商品管理接口
-- 购物车与订单接口
