@@ -30,6 +30,8 @@ const UserProfile = () => {
         return res.json();
       })
       .then(data => {
+        // debug: 打印后端返回内容
+        console.log('profile接口返回', data);
         setNickname(data.nickname || '未设置昵称');
         setAvatar(data.avatar ? (data.avatar.startsWith('http') ? data.avatar : `/api${data.avatar}`) : defaultAvatarUrl);
         setAddress(data.address || '未设置');

@@ -164,7 +164,6 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className={styles.pageWrapper}>
     <div className={styles['product-detail-container']}>
       <div className={styles['product-detail-main']}>
         <div className={styles['product-detail-imgs']}>
@@ -222,7 +221,6 @@ const ProductDetail = () => {
             <button className={styles['cart-btn']} onClick={handleAddToCart}>加入购物车</button>
           </div>
         </div>
-      </div>
       </div>
       {/* 型号选择弹窗 */}
       {showModelModal && (

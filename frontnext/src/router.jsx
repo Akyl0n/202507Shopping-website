@@ -26,6 +26,7 @@ const AppRouter = () => (
         <Route path="/cart" element={<Cart />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/UserProfile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/profile/edit" element={<EditProfile />} />
         <Route path="/order" element={<Order />}>
           <Route path="pending" element={<OrderTab label="待付款" />} />

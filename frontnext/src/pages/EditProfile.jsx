@@ -60,21 +60,25 @@ const EditProfile = () => {
   const handleSave = async () => {
     setLoading(true);
     // 保存昵称
-    await fetch('/api/user/nickname', {
+    const nicknameRes = await fetch('/api/user/nickname', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({ nickname })
     });
+    const nicknameData = await nicknameRes.json();
+    console.log('保存昵称返回:', nicknameData);
     // 保存地址
-    await fetch('/api/user/address', {
+    const addressRes = await fetch('/api/user/address', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({ address })
     });
+    const addressData = await addressRes.json();
+    console.log('保存地址返回:', addressData);
     setLoading(false);
-    navigate('/profile');
+    navigate('/profile?' + Date.now());
   };
 
   if (!user) return <div className={styles['auth-container']}>请先登录</div>;
