@@ -25,7 +25,11 @@ const Auth = () => {
       const res = await axios.post('/api/login', loginData, { withCredentials: true });
       setSuccess(res.data.message || '登录成功');
       setUser(loginData.username);
+<<<<<<< HEAD
       navigate('/UserProfile', { replace: true });
+=======
+      navigate('/profile');
+>>>>>>> c7beb6525a03bd045d9c8e5ff0e07b985d21a025
     } catch (err) {
       let errorMsg = '登录失败';
       if (err && err.response && err.response.data && err.response.data.error) {
@@ -60,7 +64,11 @@ const Auth = () => {
       }, { withCredentials: true });
       setSuccess(res.data.message || '注册成功');
       setUser(registerData.username);
+<<<<<<< HEAD
       navigate('/UserProfile', { replace: true });
+=======
+      navigate('/profile');
+>>>>>>> c7beb6525a03bd045d9c8e5ff0e07b985d21a025
     } catch (err) {
       let errorMsg = '注册失败';
       if (err && err.response && err.response.data && err.response.data.error) {
