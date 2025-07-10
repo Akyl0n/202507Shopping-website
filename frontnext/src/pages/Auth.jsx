@@ -76,11 +76,10 @@ const Auth = () => {
       setSuccess(res.data.message || '注册成功');
       setUser(registerData.username);
       await fetchUserProfile();
-      // 注册后自动保存昵称和地址（如有接口可调用，否则仅本地store）
+      // 注册后自动保存昵称和地址
       if (registerData.address) {
         try { await axios.post('/api/user/address', { address: registerData.address }, { withCredentials: true }); } catch {}
       }
-      // 可选：注册后弹窗提示完善资料
     } catch (err) {
       let errorMsg = '注册失败';
       if (err && err.response && err.response.data && err.response.data.error) {

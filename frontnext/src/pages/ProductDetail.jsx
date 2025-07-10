@@ -100,7 +100,6 @@ const ProductDetail = () => {
       const data = await res.json();
       if (res.ok) {
         alert('已加入购物车');
-        // 可选：刷新购物车全局状态
         fetch('/api/cart', { credentials: 'include' })
           .then(r => r.json())
           .then(list => setCart(Array.isArray(list) ? list : (list.items || [])));
@@ -135,7 +134,7 @@ const ProductDetail = () => {
       const data = await res.json();
       if (data && data.address) address = data.address;
     } catch {
-      // intentionally left blank
+      //
     }
     // 构造下单数据
     const items = [{
@@ -186,7 +185,6 @@ const ProductDetail = () => {
         </div>
         <div className={styles['product-detail-info']}>
           <div className={styles['product-detail-title']}>{product.title}</div>
-          {/* 新增：商品描述 */}
           <div style={{fontSize:'1.08rem',color:'#666',margin:'2px 0 2px 0',lineHeight:1.6}}>{product.description}</div>
           <div className={styles['product-detail-row']}>
             <span className={styles['product-detail-price']}>￥{minPrice}</span>
@@ -206,7 +204,6 @@ const ProductDetail = () => {
                   onClick={() => setShowModelModal(true)}
                 >{m}</span>
               ))}
-              {/* 当前选中型号始终高亮，点击前三个型号任意一个弹窗 */}
             </div>
           </div>
           <div className={styles['product-detail-row']} style={{alignItems:'center'}}>

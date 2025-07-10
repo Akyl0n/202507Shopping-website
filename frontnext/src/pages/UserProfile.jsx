@@ -9,7 +9,6 @@ const defaultAvatarUrl = 'https://img.alicdn.com/sns_logo/i2/4018057314/O1CN0125
 const UserProfile = () => {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
-  // 只保留必要的状态
   const [address, setAddress] = useState('');
   const [nickname, setNickname] = useState('');
   const [avatar, setAvatar] = useState('');

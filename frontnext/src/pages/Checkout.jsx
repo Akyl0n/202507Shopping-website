@@ -16,12 +16,12 @@ const Checkout = () => {
   // 选中的购物车项id
   let selectedIds = (location.state && location.state.selectedIds) || [];
   if (selectedIds.length === 0) {
-    // 尝试从localStorage恢复
+    // 从localStorage恢复
     try {
       const local = JSON.parse(localStorage.getItem('checkout_selected_ids'));
       if (Array.isArray(local)) selectedIds = local;
     } catch {
-      // intentionally ignored
+      //
     }
   }
   // 结算页挂载时自动拉取购物车数据或订单明细
@@ -50,9 +50,9 @@ const Checkout = () => {
     }
   }, [setCart, orderId]);
 
-  // 新增：订单明细状态
+  // 订单明细状态
   const [orderDetail, setOrderDetail] = useState(null);
-  const [showPayModal, setShowPayModal] = useState(false); // 新增：支付弹窗状态
+  const [showPayModal, setShowPayModal] = useState(false); // 支付弹窗状态
 
   const selectedItems = cart.filter(item => selectedIds.includes(item.id));
   const total = selectedItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
@@ -76,16 +76,16 @@ const Checkout = () => {
       product_id: item.product_id,
       model_id: item.model_id,
       quantity: item.qty,
-      price: item.price // 新增，适配后端明细表
+      price: item.price
     }));
-    // 获取用户地址（如有需要可从用户信息store获取）
+    // 获取用户地址（可从用户信息store获取）
     let address = '';
     try {
       const res = await fetch('/api/user/address', { credentials: 'include' });
       const data = await res.json();
       if (data && data.address) address = data.address;
     } catch {
-      // intentionally ignored
+      //
     }
     // 提交订单到后端
     const res = await fetch('/api/order/create', {
@@ -118,7 +118,6 @@ const Checkout = () => {
   const handlePay = async () => {
     if (!orderId) return;
     try {
-      // 假设后端有支付接口
       const res = await fetch(`/api/order/pay`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -126,7 +125,7 @@ const Checkout = () => {
         body: JSON.stringify({ order_id: Number(orderId) })
       });
       const text = await res.text();
-      console.log('pay response:', res.status, text); // 调试输出
+      console.log('pay response:', res.status, text);
       if (res.ok) {
         alert('模拟付款成功！');
         setShowPayModal(false);

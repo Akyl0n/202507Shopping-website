@@ -29,7 +29,7 @@
 .cart-list {
   display: flex;
   flex-direction: column;
-  gap: 40px; /* 卡片间隔适中 */
+  gap: 40px;
   flex: 1 1 auto;
 }
 .cart-card {

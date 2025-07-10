@@ -35,10 +35,8 @@ const Cart = () => {
         }
       })
       .catch(() => {
-        // 可根据需要处理错误
         setCart([]);
       });
-    // eslint-disable-next-line
   }, []);
 
   // 结算跳转
@@ -52,7 +50,7 @@ const Cart = () => {
       alert('请先选择要购买的商品');
       return;
     }
-    // 跳转结算页，传递选中商品id，并存入localStorage防止刷新丢失
+    // 跳转结算页，传递选中商品id，存入localStorage防止刷新丢失，持久化
     localStorage.setItem('checkout_selected_ids', JSON.stringify(selected));
     navigate('/checkout', { state: { selectedIds: selected } });
   };

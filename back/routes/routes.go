@@ -14,7 +14,7 @@ func RegisterRoutes(r *gin.Engine, pool *pgxpool.Pool) {
 		c.JSON(200, gin.H{"message": "pong"})
 	})
 
-	// ========== 统一注册 /api 路由组，兼容前端所有 /api/xxx 请求 ==========
+	// 统一注册 /api 路由组
 	api := r.Group("/api")
 	{
 		api.POST("/register", func(c *gin.Context) {
@@ -161,9 +161,7 @@ func RegisterRoutes(r *gin.Engine, pool *pgxpool.Pool) {
 			var nickname, address, avatar string
 			err := pool.QueryRow(context.Background(), "SELECT nickname, address, avatar FROM users WHERE username=$1", username).Scan(&nickname, &address, &avatar)
 			if err != nil {
-				// 兼容老表结构
 				_ = pool.QueryRow(context.Background(), "SELECT address, avatar FROM users WHERE username=$1", username).Scan(&address, &avatar)
-				// nickname 可能没有
 				nickname = username
 			}
 			c.JSON(200, gin.H{

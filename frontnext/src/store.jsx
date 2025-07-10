@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-// 示例：全局购物车状态管理
 export function useCart() {
   const [cart, setCart] = useState([]);
 

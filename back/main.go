@@ -27,8 +27,8 @@ func main() {
 	store.Options(sessions.Options{
 		Path:     "/",
 		HttpOnly: true,
-		Secure:   false, // 本地开发用，生产环境需 true
-		SameSite: 0,     // SameSite=None，跨域前端能带 cookie
+		Secure:   false, // 应该要true，本地就不管了
+		SameSite: 0,
 	})
 	r.Use(sessions.Sessions("mysession", store))
 
@@ -43,7 +43,7 @@ func main() {
 	// 注册路由
 	routes.RegisterRoutes(r, pool)
 
-	// 显式 listen 端口
+	// listen 端口
 	listener, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		log.Fatalf("监听端口失败: %v", err)
